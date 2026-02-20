@@ -17,8 +17,11 @@ void event_wait(struct task* caller, struct event* event) {
   // его в а-ля BLOCKED состояние.
 
   while (!atomic_load(&event->is_fired)) {
-    task_yield(caller);
+    //caller->state=UTHREAD_BLOCKED;
+    task_block(caller);
   }
+  task_unblock(caller);
+  //caller->state=UTHREAD_RUNNABLE;
 }
 
 void event_fire(struct event* event) {

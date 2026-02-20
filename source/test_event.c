@@ -27,6 +27,7 @@ void test_event() {
   tasks_submit(&event_test, NULL);
   tasks_start();
   tasks_wait();
+  tasks_print_statistics();
   tasks_destroy();
   assert(state == 1);
 }

@@ -46,6 +46,9 @@ void tasks_init();
  */
 void tasks_submit(task_body body, void* argument);
 
+
+void task_block(struct task* task);
+void task_unblock(struct task* task);
 /**
  * Запустить планировщик.
  *
